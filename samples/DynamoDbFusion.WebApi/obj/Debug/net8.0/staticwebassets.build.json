@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ITuY9y13v1+U5vYglsVk8aLwUOqvnJ4cb6E89QxPI6Q=",
+  "Source": "DynamoDbFusion.WebApi",
+  "BasePath": "_content/DynamoDbFusion.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,13 @@
+C:\Users\johnb\OneDrive\Documents\GitHub\dynamodb-fusion\src\DynamoDbFusion.Core\bin\Debug\net8.0\DynamoDbFusion.Core.deps.json
+C:\Users\johnb\OneDrive\Documents\GitHub\dynamodb-fusion\src\DynamoDbFusion.Core\bin\Debug\net8.0\DynamoDbFusion.Core.dll
+C:\Users\johnb\OneDrive\Documents\GitHub\dynamodb-fusion\src\DynamoDbFusion.Core\bin\Debug\net8.0\DynamoDbFusion.Core.pdb
+C:\Users\johnb\OneDrive\Documents\GitHub\dynamodb-fusion\src\DynamoDbFusion.Core\obj\Debug\net8.0\DynamoDbFusion.Core.csproj.AssemblyReference.cache
+C:\Users\johnb\OneDrive\Documents\GitHub\dynamodb-fusion\src\DynamoDbFusion.Core\obj\Debug\net8.0\DynamoDbFusion.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\johnb\OneDrive\Documents\GitHub\dynamodb-fusion\src\DynamoDbFusion.Core\obj\Debug\net8.0\DynamoDbFusion.Core.AssemblyInfoInputs.cache
+C:\Users\johnb\OneDrive\Documents\GitHub\dynamodb-fusion\src\DynamoDbFusion.Core\obj\Debug\net8.0\DynamoDbFusion.Core.AssemblyInfo.cs
+C:\Users\johnb\OneDrive\Documents\GitHub\dynamodb-fusion\src\DynamoDbFusion.Core\obj\Debug\net8.0\DynamoDbFusion.Core.csproj.CoreCompileInputs.cache
+C:\Users\johnb\OneDrive\Documents\GitHub\dynamodb-fusion\src\DynamoDbFusion.Core\obj\Debug\net8.0\DynamoDbFusion.Core.sourcelink.json
+C:\Users\johnb\OneDrive\Documents\GitHub\dynamodb-fusion\src\DynamoDbFusion.Core\obj\Debug\net8.0\DynamoDbFusion.Core.dll
+C:\Users\johnb\OneDrive\Documents\GitHub\dynamodb-fusion\src\DynamoDbFusion.Core\obj\Debug\net8.0\refint\DynamoDbFusion.Core.dll
+C:\Users\johnb\OneDrive\Documents\GitHub\dynamodb-fusion\src\DynamoDbFusion.Core\obj\Debug\net8.0\DynamoDbFusion.Core.pdb
+C:\Users\johnb\OneDrive\Documents\GitHub\dynamodb-fusion\src\DynamoDbFusion.Core\obj\Debug\net8.0\ref\DynamoDbFusion.Core.dll

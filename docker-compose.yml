@@ -1,0 +1,100 @@
+version: '3.8'
+
+services:
+  dynamodb-fusion:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DynamoDbFusion__DynamoDb__Region=us-east-1
+      - DynamoDbFusion__DynamoDb__ServiceUrl=http://dynamodb-local:8000
+      - DynamoDbFusion__Cache__L2__RedisConnectionString=redis:6379
+      - DynamoDbFusion__Cache__Enabled=true
+      - DynamoDbFusion__Cache__L1__Enabled=true
+      - DynamoDbFusion__Cache__L2__Enabled=true
+    depends_on:
+      - redis
+      - dynamodb-local
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    networks:
+      - dynamodb-fusion-network
+
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - dynamodb-fusion-network
+
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    command: ["-jar", "DynamoDBLocal.jar", "-sharedDb", "-dbPath", "./data"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - dynamodb_data:/home/dynamodblocal/data
+    working_dir: /home/dynamodblocal
+    restart: unless-stopped
+    networks:
+      - dynamodb-fusion-network
+
+  # Monitoring stack (optional)
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    networks:
+      - dynamodb-fusion-network
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+    restart: unless-stopped
+    networks:
+      - dynamodb-fusion-network
+
+volumes:
+  redis_data:
+  dynamodb_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  dynamodb-fusion-network:
+    driver: bridge 
